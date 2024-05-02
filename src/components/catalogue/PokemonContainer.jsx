@@ -1,8 +1,8 @@
 'use client';
 import React, { useState } from "react";
 import { useDisplayPokemons } from "@/hooks/actions";
-import { Button } from "@/components/ui/button";
-import Search from "@/components/ui/search";
+import { Button } from "@/components/ui/Button";
+import Search from "@/components/ui/Search";
 import { useSearchPokemon, useGetAllPokemons } from "@/hooks/actions";
 import PokemonCard from "@/components/catalogue/PokemonCard";
 
