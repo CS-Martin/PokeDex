@@ -1,9 +1,9 @@
 'use client';
 import React, { useState } from "react";
-import { useDisplayPokemons } from "@/hooks/actions";
+import { useDisplayPokemons } from "@/hooks/catalogue-actions";
 import { Button } from "@/components/ui/button";
 import Search from "@/components/ui/search";
-import { useSearchPokemon, useGetAllPokemons } from "@/hooks/actions";
+import { useSearchPokemon, useGetAllPokemons } from "@/hooks/catalogue-actions";
 import PokemonCard from "@/components/catalogue/PokemonCard";
 import {
     DropdownMenu,
@@ -18,9 +18,7 @@ import {
 export default function PokemonContainer() {
     const [limit, setLimit] = useState(10);
     const [searchTerm, setSearchTerm] = useState("");
-    const [position, setPosition] = useState('')
     const [sortBy, setSortBy] = useState('')
-
     const { allPokemons } = useGetAllPokemons(sortBy);
     const { pokemons, isLoading } = useDisplayPokemons(limit, sortBy);
     const { filteredPokemons } = useSearchPokemon(allPokemons, searchTerm);
@@ -36,23 +34,12 @@ export default function PokemonContainer() {
     const handleSortBy = (method) => {
         setSortBy(method);
     };
-    
-    console.log(sortBy)
+
     return (
         <div>
             <div className="flex w-full flex-col-2 gap-x-5">
                 <Search placeholder={"Search for Pokemon"} onSearch={handleSearch} />
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="outline">Sort By</Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-56">
-                        <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-                            <DropdownMenuRadioItem value="id" onClick={() => handleSortBy('id')}>Sort by ID</DropdownMenuRadioItem>
-                            <DropdownMenuRadioItem value="name" onClick={() => handleSortBy('name')}>Sort by Name</DropdownMenuRadioItem>
-                        </DropdownMenuRadioGroup>
-                    </DropdownMenuContent>
-                </DropdownMenu>
+                <SortDropDown handleSortBy={handleSortBy} />
             </div>
             {isLoading ? (
                 <p>Loading...</p>
@@ -80,4 +67,22 @@ export default function PokemonContainer() {
             </div>
         </div>
     );
+}
+
+const SortDropDown = ({ handleSortBy, position, setPosition }) => {
+    return (
+        <>
+            <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                    <Button variant="outline">Sort By</Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56">
+                    <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+                        <DropdownMenuRadioItem value="id" onClick={() => handleSortBy('id')}>Sort by ID</DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="name" onClick={() => handleSortBy('name')}>Sort by Name</DropdownMenuRadioItem>
+                    </DropdownMenuRadioGroup>
+                </DropdownMenuContent>
+            </DropdownMenu>
+        </>
+    )
 }

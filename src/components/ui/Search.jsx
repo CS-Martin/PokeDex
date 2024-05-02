@@ -3,7 +3,7 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
-import { getAllPokemons } from '@/hooks/actions';
+import { getAllPokemons } from '@/hooks/catalogue-actions';
 
 export default function Search({ placeholder, onSearch }) {
   const searchParams = useSearchParams();

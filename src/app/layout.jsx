@@ -11,7 +11,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased p-5`}>{children}</body>
+      <body className={`${inter.className} antialiased p-5`}>
+        {children}
+      </body>
     </html>
   );
 }
