@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { fetchAllPokemons } from '@/api/pokeapi';
 import { useScrollToBottom } from '@/lib/utils';
 import { useRouter } from 'next/router';
-import { useDebounce } from 'use-debounce';
 
 export const useSearchPokemon = (pokemons, searchTerm) => {
     const [filteredPokemons, setFilteredPokemons] = useState([]);  
@@ -37,7 +36,6 @@ export const useDisplayPokemons = (limit) => {
                 if (isFirstLoad) {
                     const data = await useFetchAllPokemons();
                     const slicedData = data.slice(0, limit);
-                    console.log(slicedData);
                     setPokemons(slicedData);
                     setIsFirstLoad(false);
                 } else {
@@ -81,10 +79,12 @@ export async function useFetchAllPokemons() {
         const storedPokemons = localStorage.getItem('pokemons');
         if (storedPokemons) {
             const response = JSON.parse(storedPokemons);
+            console.log('Fetched from localStorage', response);
             return response;
         } else {
             const response = await fetchAllPokemons();
             localStorage.setItem('pokemons', JSON.stringify(response));
+            console.log('Fetched from API', response);
             return response;
         }
     } catch (error) {
