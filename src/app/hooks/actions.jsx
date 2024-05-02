@@ -35,13 +35,13 @@ export const useDisplayPokemons = (limit) => {
                 setLoading(true);
 
                 if (isFirstLoad) {
-                    const data = await useAllPokemons();
+                    const data = await useFetchAllPokemons();
                     const slicedData = data.slice(0, limit);
                     console.log(slicedData);
                     setPokemons(slicedData);
                     setIsFirstLoad(false);
                 } else {
-                    const data = await useAllPokemons();
+                    const data = await useFetchAllPokemons();
                     const slicedData = data.slice(limit - 10, limit);
                     setPokemons(prevPokemons => [...prevPokemons, ...slicedData]);
                 }
@@ -64,7 +64,7 @@ export const useGetAllPokemons = () => {
     useEffect(() => {
         const fetchAllPokemonsData = async () => {
             try {
-                const data = await useAllPokemons();
+                const data = await useFetchAllPokemons();
                 setAllPokemons(data);
             } catch (error) {
                 console.error(error);
@@ -76,7 +76,7 @@ export const useGetAllPokemons = () => {
     return { allPokemons };
 };  
 
-export async function useAllPokemons() {
+export async function useFetchAllPokemons() {
     try {
         const storedPokemons = localStorage.getItem('pokemons');
         if (storedPokemons) {
