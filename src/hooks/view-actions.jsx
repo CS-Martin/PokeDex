@@ -10,6 +10,7 @@ export const useFetchPokemon = (id) => {
     const [pokemon, setPokemon] = useState(null);
     const [pokemonDetails, setPokemonDetails] = useState(null);
     const [pokemonDescription, setPokemonDescription] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -31,12 +32,16 @@ export const useFetchPokemon = (id) => {
                     setPokemon(foundPokemon);
                     setPokemonDetails(pokemonDetails);
                     setPokemonDescription(pokemonDescription);
+                    setIsLoading(false);
                 } else {
                     setPokemon(null);
                 }
             } catch (error) {
                 console.error('Error fetching pokemon:', error);
                 setPokemon(null);
+                setPokemonDetails(null);
+                setPokemonDescription(null);
+                setIsLoading(false);
             }
         };
         fetchData();

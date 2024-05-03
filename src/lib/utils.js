@@ -47,6 +47,10 @@ export function sortPokemons(pokemons, sortBy) {
   });
 }
 
+export function capitalizeFirstLetter(name) {
+  return name.charAt(0).toUpperCase() + name.slice(1)
+}
+
 // https://www.eurogamer.net/pokemon-go-type-chart-effectiveness-weaknesses
 export function getPokemonWeakness(pokemonType) {
   const weakness = {

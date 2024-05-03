@@ -1,5 +1,4 @@
 import "./icons.css";
-import Image from "next/image";
 
 export const Bug = () => {
     return (

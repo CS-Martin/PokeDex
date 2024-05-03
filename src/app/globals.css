@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Pokemon';
+  src: url("../fonts/solid.ttf");
+}
+
+@font-face {
+  font-family: 'Minecraft';
+  src: url("../fonts//minecraft.ttf");
+}
+
+.pokemon-font {
+  font-family: 'Pokemon';
+}
+
+.minecraft-font {
+  font-family: 'Minecraft';
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -95,3 +113,14 @@
   }
 }
 
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
