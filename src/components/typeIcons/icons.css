@@ -1,0 +1,112 @@
+.icon-container {
+    @apply flex items-center justify-center rounded-md shadow-lg px-[6px] w-fit;
+}
+
+.bug {
+    width: 14px;
+    background: #92BC2C;
+    box-shadow: 0 0 20px #92BC2C;
+} 
+
+.dark-icon {
+    width: 14px;
+    background: #595761;
+    box-shadow: 0 0 20px #595761;
+}
+
+
+.dragon {
+    width: 14px;
+    background: #0C69C8;
+    box-shadow: 0 0 20px #0C69C8;
+}
+
+.electric {
+    width: 14px;
+    background: #F2D94E;
+    box-shadow: 0 0 20px #F2D94E;
+}
+
+.fire {
+    width: 14px;
+    background: #FBA54C;
+    box-shadow: 0 0 20px #FBA54C;
+}
+
+.fairy {
+    width: 14px;
+    background: #EE90E6;
+    box-shadow: 0 0 20px #EE90E6;
+}
+
+.fighting {
+    width: 14px;
+    background: #D3425F;
+    box-shadow: 0 0 20px #D3425F;
+}
+
+.flying {
+    width: 14px;
+    background: #A1BBEC;
+    box-shadow: 0 0 20px #A1BBEC;
+}
+
+.ghost {
+    width: 14px;
+    background: #5F6DBC;
+    box-shadow: 0 0 20px #5F6DBC;
+}
+
+.grass {
+    width: 14px;
+    background: #5FBD58;
+    box-shadow: 0 0 20px #5FBD58;
+}
+
+.ground {
+    width: 14px;
+    background: #DA7C4D;
+    box-shadow: 0 0 20px #DA7C4D;
+}
+
+.ice {
+    width: 14px;
+    background: #75D0C1;
+    box-shadow: 0 0 20px #75D0C1;
+}
+
+.normal {
+    width: 14px;
+    background: #A0A29F;
+    box-shadow: 0 0 20px #A0A29F;
+}
+
+.poison {
+    width: 14px;
+    background: #B763CF;
+    box-shadow: 0 0 20px #B763CF;
+}
+
+.psychic {
+    width: 14px;
+    background: #FA8581;
+    box-shadow: 0 0 20px #FA8581;
+}
+
+.rock {
+    width: 14px;
+    background: #C9BB8A;
+    box-shadow: 0 0 20px #C9BB8A;
+}
+
+.steel {
+    width: 14px;
+    background: #5695A3;
+    box-shadow: 0 0 20px #5695A3;
+}
+
+.water {
+    width: 14px;
+    background: #539DDF;
+    box-shadow: 0 0 20px #539DDF;
+}

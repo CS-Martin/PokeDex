@@ -1,6 +1,26 @@
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { useEffect } from "react";
+import {
+  Bug,
+  Dark,
+  Dragon,
+  Electric,
+  Fire,
+  Fairy,
+  Fighting,
+  Flying,
+  Ghost,
+  Grass,
+  Ground,
+  Ice,
+  Normal,
+  Poison,
+  Psychic,
+  Rock,
+  Steel,
+  Water,
+} from "@/components/typeIcons/icons";
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs));
@@ -48,7 +68,7 @@ export function getPokemonWeakness(pokemonType) {
     dragon: ["steel", "fairy"],
     dark: ["fighting", "dark", "fairy"],
     fairy: ["poison", "steel", "fire"],
-  }
+  };
 
   return weakness[pokemonType];
 }
@@ -73,7 +93,7 @@ export function getPokemonStrength(pokemonType) {
     dragon: ["dragon"],
     dark: ["ghost", "psychic"],
     fairy: ["fighting", "dragon", "dark"],
-  }
+  };
 
   return strength[pokemonType];
 }

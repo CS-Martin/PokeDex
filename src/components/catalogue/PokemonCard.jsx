@@ -2,20 +2,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import styles from "@/app/globals.css"; // Import CSS styles
+import styles from "@/app/globals.css";
+import { getPokemonType } from "../typeIcons/icons";
 
 export default function PokemonCard({ pokemon }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
-      className={`p-5 py-12 border rounded-lg border-[#e6e6e6] relative card-container ${isHovered ? styles["card-container"] : ""}`}
+      className={`pb-10 pt-4 px-3 max-w-[224px] border rounded-lg border-[#e6e6e6] relative card-container ${isHovered ? styles["card-container"] : ""}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{ boxShadow: isHovered ? "0px 4px 6px rgba(0, 0, 0, 0.1)" : "none" }}
     >
       <Link href={`/pokemon/${pokemon.id}/details`} className="">
-        <p className="absolute top-3">{pokemon.types}</p>
+      <div className="flex flex-wrap gap-2 ">
+        {pokemon.types.map((type, index) => {
+          const Icon = getPokemonType(type);
+          return Icon;
+        })}
+      </div>
+        {/* <p className="absolute top-3">{pokemon.types}</p> */}
         <Image
           src={pokemon.image}
           alt={`${pokemon.name} Image`}
