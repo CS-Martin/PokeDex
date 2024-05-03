@@ -1,6 +1,6 @@
 'use client';
 
-import { Header } from "@/components/ui/header"; 
+import { Header } from "../../components/ui/header"; 
 export default function Layout({ children }) {
   return (
     <div>

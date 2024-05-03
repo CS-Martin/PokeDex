@@ -3,11 +3,11 @@
 import React, { Suspense, useState } from "react";
 import { useDisplayPokemons } from "@/hooks/catalogue-actions";
 import { Button } from "@/components/ui/button";
-import Search from "@/components/ui/search";
+import Search from "../ui/search";
 import { useSearchPokemon, useGetAllPokemons } from "@/hooks/catalogue-actions";
 import PokemonCard from "@/components/catalogue/PokemonCard";
 import { ModeToggle } from "@/components/ui/theme-toggler";
-import { Loading } from "@/components/ui/loading";
+import { Loading } from "../ui/loading";
 import { PokemonCardsSkeleton } from "@/components/ui/skeletons";
 import {
     DropdownMenu,

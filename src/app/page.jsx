@@ -1,6 +1,6 @@
 'use client';
 
-import { Header } from "@/components/ui/header";
+import { Header } from "../components/ui/header";
 import PokemonContainer from "@/components/catalogue/PokemonContainer";
 
 export default function Page() {
