@@ -101,3 +101,28 @@ export function getPokemonStrength(pokemonType) {
 
   return strength[pokemonType];
 }
+
+export function getPokemonColor(pokemonType) {
+  const colors = {
+    bug: "#92BC2C",
+    dark: "#595761",
+    dragon: "#0C69C8",
+    electric: "#EDD53E",
+    fire: "#FD7D24",
+    fairy: "#EC8CE5",
+    fighting: "#D04164",
+    flying: "#8FA8DD",
+    ghost: "#516AAC",
+    grass: "#5DBE62",
+    ground: "#DC7545",
+    ice: "#70CCBD",
+    normal: "#9298A4",
+    poison: "#A864C7",
+    psychic: "#F66F71",
+    rock: "#C5B489",
+    steel: "#52869D",
+    water: "#4A90DA",
+  };
+
+  return colors[pokemonType];
+}

@@ -93,7 +93,6 @@
   }
 }
 
-/* styles.css */
 .hovered-text {
   transform: translateY(-40px);
   transition: transform 0.3s ease;

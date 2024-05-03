@@ -6,6 +6,8 @@ import { useFetchPokemon } from "@/hooks/view-actions";
 import { Loading } from "@/components/ui/loading";
 import { capitalizeFirstLetter, getPokemonWeakness } from "@/lib/utils";
 import { getPokemonType } from "@/components/typeIcons/icons";
+import { getPokemonColor } from "@/lib/utils";
+import DisplayPokemonImage from "@/components/catalogue/DisplayPokemonImage";
 
 export default function Page() {
   const pathname = usePathname();
@@ -23,27 +25,21 @@ export default function Page() {
       {pokemon ? (
         <div className="flex flex-col items-center ">
           <div className="grid w-full max-w-6xl gap-3 lg:grid-cols-2 grid-col-1">
-            <div className="relative h-full my-auto border-[#278650] border rounded-xl md:hidden">
+
+            <div className="relative h-full my-auto border rounded-xl md:hidden card-container">
               <div className="">
-                <Image
-                  className="mx-auto"
-                  priority
-                  src={pokemon.image}
-                  alt={pokemon.name}
-                  width={500}
-                  height={500}
-                />
+                <DisplayPokemonImage pokemon={pokemon} size={500} />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <div className="flex justify-between">
+              <div className="flex items-center justify-between">
                 <p className="text-3xl">
                   {capitalizeFirstLetter(pokemon.name)}
                 </p>
                 <p>#{pokemon.id}</p>
               </div>
-              <div className="flex ml-5 text-center border-l flex-col-2">
+              <div className="flex items-center ml-5 text-center border-l flex-col-2">
                 <div className="w-[50%]">
                   <p>Height</p>
                   <p>{pokemonDetails.height}'</p>
@@ -53,11 +49,12 @@ export default function Page() {
                   <p>{pokemonDetails.weight}</p>
                 </div>
               </div>
-              <div className="col-span-2 border-t">
+              <div className="flex flex-col justify-center col-span-2 border-t">
                 <p>Description:</p>
                 <p>{cleanPokemonDescription(pokemonDescription.flavor_text_entries[0].flavor_text)}</p>
               </div>
-              <div className="grid grid-cols-3 col-span-2 border-t border-b">
+
+              <div className="grid grid-cols-3 col-span-2 pt-5 border-t border-b">
                 {["HP", "ATT", "DEF", "SAT", "SDF", "SPD"].map((stat, index) => (
                   <div key={stat} className="flex gap-3">
                     <p>{stat}</p>
@@ -69,7 +66,7 @@ export default function Page() {
                 <p>Moves:</p>
                 {/* loop to pokemonDetails.moves[index].move.name 6x. Get the name*/}
                 {pokemonDetails.moves.slice(0, 6).map((move, index) => (
-                  <p key={index}>{move.move.name}</p>
+                  <p className="leading-7" key={index}>{move.move.name}</p>
                 ))}
               </div>
               <div className="flex flex-col gap-3">
@@ -95,24 +92,17 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="my-auto border-[#278650] border rounded-xl md:block hidden">
-              <div>
-                <Image
-                  className="mx-auto"
-                  priority
-                  src={pokemon.image}
-                  alt={pokemon.name}
-                  width={500}
-                  height={500}
-                />
+            <div className={`relative hidden h-full my-auto border-4 rounded-xl md:block card-container`}>
+              <div className="">
+                <DisplayPokemonImage pokemon={pokemon} size={500} />
               </div>
-              {/* Name */}
             </div>
           </div>
         </div>
       ) : (
         <Loading />
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }

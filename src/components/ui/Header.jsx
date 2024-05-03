@@ -1,12 +1,10 @@
 import Image from "next/image";
-import { NextButton, PrevButton } from "@/components/pokemon/customButton";
+import { NextButton, PrevButton } from "@/components/ui/customButton";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 export function Header() {
-  
   const pathname = usePathname();
-  console.log(pathname);
 
   const isHomePage = pathname === "/";
   return (

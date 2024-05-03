@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState, Suspense } from "react"; // Import Suspense
+import { useState, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import styles from "@/app/globals.css";
 import { getPokemonType } from "../typeIcons/icons";
 import { PokemonCardSkeleton } from "../ui/skeletons";
+import DisplayPokemonImage from "@/components/catalogue/DisplayPokemonImage";
 
 export default function PokemonCard({ pokemon }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -24,16 +25,10 @@ export default function PokemonCard({ pokemon }) {
               return Icon;
             })}
           </div>
-          <Image
-            src={pokemon.image}
-            alt={`${pokemon.name} Image`}
-            width={200}
-            height={200}
-            className="transition duration-300 ease-in-out pixelated hover:-translate-y-1 hover:scale-110"
-          />
+          <DisplayPokemonImage pokemon={pokemon} size={200} />
           <div className={`${isHovered ? "hovered-text" : ""} justify-between absolute bottom-3`}>
             <p>#{pokemon.id}</p>
-            <p className="lg:text-xl" style={{ textShadow: "0 0 2px #FDCC02" }}>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</p>
+            <p className="lg:text-xl">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</p>
           </div>
         </Link>
         {isHovered && (
