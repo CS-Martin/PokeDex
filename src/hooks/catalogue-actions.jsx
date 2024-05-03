@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { fetchAllPokemons } from '@/api/pokeapi';
 import { sortPokemons } from '@/lib/utils';
-import { useScrollToBottom } from '@/lib/utils';
-import { useRouter } from 'next/router';
 
 /**
  * Custom hook to filter an array of pokemons based on what user  searches

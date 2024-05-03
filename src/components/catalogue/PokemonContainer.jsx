@@ -1,4 +1,5 @@
 'use client';
+
 import React, { Suspense, useState } from "react";
 import { useDisplayPokemons } from "@/hooks/catalogue-actions";
 import { Button } from "@/components/ui/button";

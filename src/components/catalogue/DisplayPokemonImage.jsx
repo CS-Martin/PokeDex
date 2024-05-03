@@ -1,4 +1,3 @@
-// ImageDisplay.js
 import Image from "next/image";
 
 export default function DisplayImageDisplay({ pokemon, size }) {
