@@ -15,7 +15,7 @@ export async function fetchAllPokemons() {
         if (storedPokemons) {
             return JSON.parse(storedPokemons);
         } else {
-            const response = await fetch(`${POKEMON_API}?offset=0&limit=1000`);
+            const response = await fetch(`${POKEMON_API}?offset=0&limit=1010`);
             const data = await response.json();
 
             const pokemons = await Promise.all(data.results.map(async (pokemon, index) => {
