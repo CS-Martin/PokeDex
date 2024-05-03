@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Search from "@/components/ui/search";
 import { useSearchPokemon, useGetAllPokemons } from "@/hooks/catalogue-actions";
 import PokemonCard from "@/components/catalogue/PokemonCard";
+import { ModeToggle } from "@/components/ui/theme-toggler";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -14,6 +15,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useScrollToBottom } from "@/lib/utils";
 
 export default function PokemonContainer() {
     const [limit, setLimit] = useState(10);
@@ -25,6 +27,7 @@ export default function PokemonContainer() {
 
     const loadMorePokemons = () => {
         setLimit((prevLimit) => prevLimit + 10);
+        useScrollToBottom();
     };
 
     const handleSearch = (input) => {
@@ -37,9 +40,10 @@ export default function PokemonContainer() {
 
     return (
         <div>
-            <div className="flex w-full flex-col-2 gap-x-5">
+            <div className="flex w-full flex-col-2 gap-x-3">
                 <Search placeholder={"Search for Pokemon"} onSearch={handleSearch} />
                 <SortDropDown handleSortBy={handleSortBy} />
+                <ModeToggle />
             </div>
             {isLoading ? (
                 <p>Loading...</p>
@@ -60,7 +64,7 @@ export default function PokemonContainer() {
 
             <div className="flex justify-center p-10">
                 {!isLoading && (
-                    <Button onClick={loadMorePokemons} variant="secondary" className="bg-[#366CB8] text-white">
+                    <Button onClick={loadMorePokemons} variant="secondary" className="">
                         Load More Pokemons
                     </Button>
                 )}

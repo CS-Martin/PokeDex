@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 export const useFetchPokemon = (id) => {
     const [pokemon, setPokemon] = useState(null);
     const [pokemonDetails, setPokemonDetails] = useState(null);
+    const [pokemonDescription, setPokemonDescription] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,8 +24,13 @@ export const useFetchPokemon = (id) => {
                     // Fetch pokemon details
                     const pokemonDetails = await fetchPokemonDetails(foundPokemon.url);
 
+                    // Fetch pokemon descriptions
+                    // "https://pokeapi.co/api/v2/pokemon/2/"
+                    const pokemonDescription = await useFetchPokemonDescription(pokemonDetails.id);
+
                     setPokemon(foundPokemon);
                     setPokemonDetails(pokemonDetails);
+                    setPokemonDescription(pokemonDescription);
                 } else {
                     setPokemon(null);
                 }
@@ -36,5 +42,16 @@ export const useFetchPokemon = (id) => {
         fetchData();
     }, [id]);
 
-    return { pokemon, pokemonDetails };
+    return { pokemon, pokemonDetails, pokemonDescription };
 };
+
+const useFetchPokemonDescription = async (id) => {
+    try {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`);
+        const data = response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching pokemon information:', error);
+        return null;
+    }
+}

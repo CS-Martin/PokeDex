@@ -1,17 +1,26 @@
 import Image from "next/image";
-import { ModeToggle } from "./theme-toggler";
+import { NextButton, PrevButton } from "@/components/pokemon/customButton";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export function Header() {
+  
+  const pathname = usePathname();
+  console.log(pathname);
+
+  const isHomePage = pathname === "/";
   return (
-    <header className="flex justify-center w-full p-3">
-        <ModeToggle />
-        <Image 
-            src="/pokedex.png"
-            height={150}
-            width={200}
-            alt="PokeDex logo"
-            className=""
+    <header className="flex justify-between w-full gap-3 p-3 md:justify-center 2xl:gap-x-10 lg:gap-x-7">
+      {!isHomePage && <PrevButton />}
+      <Link href={'/'}>
+        <Image
+          src="/pokedex.png"
+          alt="PokeDex logo"
+          width={130}
+          height={150}
         />
+      </Link>
+      {!isHomePage && <NextButton />}
     </header>
   );
 }

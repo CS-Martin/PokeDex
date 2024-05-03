@@ -8,7 +8,7 @@ export async function fetchAllPokemons() {
         if (storedPokemons) {
             return JSON.parse(storedPokemons);
         } else {
-            const response = await fetch(`${POKEMON_API}?offset=0&limit=1302`);
+            const response = await fetch(`${POKEMON_API}?offset=0&limit=1000`);
             const data = await response.json();
 
             const pokemons = await Promise.all(data.results.map(async (pokemon, index) => {
@@ -22,7 +22,7 @@ export async function fetchAllPokemons() {
                     types: types,
                 };
             }));
-
+            
             localStorage.setItem('pokemons', JSON.stringify(pokemons));
             return pokemons;
         }
@@ -33,6 +33,7 @@ export async function fetchAllPokemons() {
 }
 
 const fetchPokemonTypes = async (url) => {
+    console.log('url fetchingasdasdhjjadja');
     try {
         const response = await fetch(url);
         const data = await response.json();
@@ -50,6 +51,17 @@ export async function fetchPokemonDetails(url) {
         return data;
     } catch (error) {
         console.error('Error fetching pokemon information:', error);
+        return null;
+    }
+}
+
+export async function fetchPokemonDescription(url) {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data.flavor_text_entries.find((entry) => entry.language.name === 'en').flavor_text;
+    } catch (error) {
+        console.error('Error fetching pokemon description:', error);
         return null;
     }
 }

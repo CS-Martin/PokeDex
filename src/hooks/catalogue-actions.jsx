@@ -4,8 +4,6 @@ import { sortPokemons } from '@/lib/utils';
 import { useScrollToBottom } from '@/lib/utils';
 import { useRouter } from 'next/router';
 
-
-
 export const useSearchPokemon = (pokemons, searchTerm) => {
     const [filteredPokemons, setFilteredPokemons] = useState([]);
 
