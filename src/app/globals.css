@@ -71,6 +71,6 @@
     @apply border-border;
   }
   body {
-    @apply bg-[#FAFAFF] h-full;
+    /* @apply bg-[#FAFAFF] h-full; */
   }
 }

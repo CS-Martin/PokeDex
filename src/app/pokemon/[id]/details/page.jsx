@@ -20,6 +20,9 @@ export default function Page() {
           <p>{pokemon.url}</p>
           <p>{pokemonDetails.weight}</p>
           <p>{pokemonDetails.height}</p>
+          {pokemonDetails.stats.map(stats => (
+            <p>{stats.stat.name}: {stats.base_stat}</p>
+          ))}
         </>
       ) : (
         <p>Loading...</p>

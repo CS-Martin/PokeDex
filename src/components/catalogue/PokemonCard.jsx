@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function PokemonCard({ pokemon }) {
   return (
-    <div className="p-5 bg-white border rounded-lg border-[#e6e6e6]">
+    <div className="p-5  border rounded-lg border-[#e6e6e6]">
       <Link href={`/pokemon/${pokemon.id}/details`}>
         <Image
           src={pokemon.image}
@@ -12,9 +12,9 @@ export default function PokemonCard({ pokemon }) {
           height={200}
           className="pixelated"
         />
-        <p className="text-black">{pokemon.id}</p>
-        <p className="text-black">{pokemon.name}</p>
-        <p className="text-black">{pokemon.types}</p>
+        <p>{pokemon.id}</p>
+        <p>{pokemon.name}</p>
+        <p>{pokemon.types}</p>
       </Link>
     </div>
   );
