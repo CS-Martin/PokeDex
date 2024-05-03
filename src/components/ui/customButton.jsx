@@ -9,7 +9,7 @@ const getNextId = (id) => {
 
 const getPrevId = (id) => {
     if (id > 1) return String(id - 1).padStart(3, '0');
-    else return '1000'; 
+    else return '1010'; 
 };
 
 const NextButton = () => {
