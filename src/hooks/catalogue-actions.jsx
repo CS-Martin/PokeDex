@@ -4,6 +4,13 @@ import { sortPokemons } from '@/lib/utils';
 import { useScrollToBottom } from '@/lib/utils';
 import { useRouter } from 'next/router';
 
+/**
+ * Custom hook to filter an array of pokemons based on what user  searches
+ *
+ * @param {Array} pokemons - The array of pokemons to filter.
+ * @param {string} searchTerm - The search term to filter the pokemons.
+ * @returns {Object} - An object containing the filtered pokemons.
+ */
 export const useSearchPokemon = (pokemons, searchTerm) => {
     const [filteredPokemons, setFilteredPokemons] = useState([]);
 
@@ -22,6 +29,13 @@ export const useSearchPokemon = (pokemons, searchTerm) => {
     return { filteredPokemons };
 };
 
+/**
+ * Custom hook to fetch and display a list of pokemons.
+ *
+ * @param {number} limit - The maximum number of pokemons to display.
+ * @param {string} sortBy - The sorting criteria for the pokemons.
+ * @returns {Object} An object containing the list of pokemons and a loading state.
+ */
 export const useDisplayPokemons = (limit, sortBy) => {
     const [pokemons, setPokemons] = useState([]);
     const [isLoading, setLoading] = useState(true);

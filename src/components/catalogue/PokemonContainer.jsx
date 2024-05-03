@@ -7,6 +7,7 @@ import { useSearchPokemon, useGetAllPokemons } from "@/hooks/catalogue-actions";
 import PokemonCard from "@/components/catalogue/PokemonCard";
 import { ModeToggle } from "@/components/ui/theme-toggler";
 import { Loading } from "@/components/ui/loading";
+import { PokemonCardsSkeleton } from "@/components/ui/skeletons";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -48,29 +49,36 @@ export default function PokemonContainer() {
                         <SortDropDown handleSortBy={handleSortBy} />
                         <ModeToggle />
                     </div>
-                    <div className="grid grid-cols-2 gap-7 xl:grid-cols-4 lg:grid-cols-3 2xl:grid-cols-5">
-                        {/* Use filteredPokemons if user is using Search. If not, use pokemons to load only sliced data*/}
-                        {(searchTerm.trim() === "" ? pokemons : filteredPokemons).map(
-                            (pokemon) => (
-                                <PokemonCard
-                                    key={pokemon.id}
-                                    pokemon={pokemon}
-                                    className="fade-enter"
-                                />
-                            )
-                        )}
-                    </div>
+                    <Suspense fallback={<PokemonCardsSkeleton />}>
+                        <div className="grid grid-cols-2 gap-7 xl:grid-cols-4 lg:grid-cols-3 2xl:grid-cols-5">
+                            {/* Use filteredPokemons if user is using Search. If not, use pokemons to load only sliced data*/}
+                            {(searchTerm.trim() === "" ? pokemons : filteredPokemons).map(
+                                (pokemon) => (
+                                    <PokemonCard
+                                        key={pokemon.id}
+                                        pokemon={pokemon}
+                                        className="fade-enter"
+                                    />
+                                )
+                            )}
+                        </div>
+                    </Suspense>
                 </div>
-            )}
+            )
+            }
 
             <div className="flex justify-center p-10">
                 {!isLoading && (
-                    <Button onClick={loadMorePokemons} variant="secondary" className="">
-                        Load More Pokemons
+                    <Button onClick={loadMorePokemons}>
+                        {isLoading ? (
+                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        ) : (
+                            <span>Load More Pokemons</span>
+                        )}
                     </Button>
                 )}
             </div>
-        </div>
+        </div >
     );
 }
 

@@ -50,6 +50,12 @@ export const useFetchPokemon = (id) => {
     return { pokemon, pokemonDetails, pokemonDescription };
 };
 
+/**
+ * Fetches the description of a Pokemon based on its ID.
+ *
+ * @param {number} id - The ID of the Pokemon.
+ * @returns {Promise<Object|null>} - A promise that resolves to the Pokemon description data or null if an error occurs.
+ */
 const useFetchPokemonDescription = async (id) => {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`);

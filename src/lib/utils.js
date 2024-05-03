@@ -1,26 +1,5 @@
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { useEffect } from "react";
-import {
-  Bug,
-  Dark,
-  Dragon,
-  Electric,
-  Fire,
-  Fairy,
-  Fighting,
-  Flying,
-  Ghost,
-  Grass,
-  Ground,
-  Ice,
-  Normal,
-  Poison,
-  Psychic,
-  Rock,
-  Steel,
-  Water,
-} from "@/components/typeIcons/icons";
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs));
@@ -32,7 +11,7 @@ export function useScrollToBottom() {
       top: document.documentElement.scrollHeight,
       behavior: "smooth",
     });
-  }, 150); // Adjust the delay duration as needed
+  }, 150);
 }
 
 export function sortPokemons(pokemons, sortBy) {

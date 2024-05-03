@@ -1,6 +1,13 @@
 const POKEMON_API = 'https://pokeapi.co/api/v2/pokemon'
 const POKEMON_IMAGE_API = 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/'
 
+/**
+ * Fetches all pokemons from the PokeAPI.
+ * If the pokemons are already stored in the local storage, it returns the stored pokemons.
+ * Otherwise, it fetches the pokemons from the API, stores them in the local storage, and returns them.
+ * @returns {Promise<Array<Object>>} An array of pokemon objects.
+ * @throws {Error} If there is an error fetching the pokemons.
+ */
 export async function fetchAllPokemons() {
     try {
         // localStorage.clear();
@@ -32,8 +39,13 @@ export async function fetchAllPokemons() {
     }
 }
 
+
+/**
+ * Fetches the types of a Pokemon from the given URL.
+ * @param {string} url - The URL to fetch the Pokemon types from.
+ * @returns {Promise<Array<string>>} - A promise that resolves to an array of Pokemon types.
+ */
 const fetchPokemonTypes = async (url) => {
-    console.log('url fetchingasdasdhjjadja');
     try {
         const response = await fetch(url);
         const data = await response.json();
@@ -44,6 +56,11 @@ const fetchPokemonTypes = async (url) => {
     }
 }
 
+/**
+ * Fetches the details of a Pokemon from the given URL.
+ * @param {string} url - The URL of the Pokemon details.
+ * @returns {Promise<Object|null>} - A Promise that resolves to the Pokemon details object, or null if there was an error.
+ */
 export async function fetchPokemonDetails(url) {
     try {
         const response = await fetch(url);
@@ -55,6 +72,11 @@ export async function fetchPokemonDetails(url) {
     }
 }
 
+/**
+ * Fetches the description of a Pokemon from the provided URL.
+ * @param {string} url - The URL to fetch the Pokemon description from.
+ * @returns {Promise<string|null>} - A promise that resolves to the Pokemon description, or null if an error occurs.
+ */
 export async function fetchPokemonDescription(url) {
     try {
         const response = await fetch(url);
