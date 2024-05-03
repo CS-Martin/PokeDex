@@ -10,7 +10,6 @@ const POKEMON_IMAGE_API = 'https://assets.pokemon.com/assets/cms2/img/pokedex/fu
  */
 export async function fetchAllPokemons() {
     try {
-        localStorage.removeItem('pokemons');
         const storedPokemons = localStorage.getItem('pokemons');
         if (storedPokemons) {
             return JSON.parse(storedPokemons);
