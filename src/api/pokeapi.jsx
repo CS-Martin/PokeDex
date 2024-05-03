@@ -3,29 +3,27 @@ const POKEMON_IMAGE_API = 'https://assets.pokemon.com/assets/cms2/img/pokedex/fu
 
 export async function fetchAllPokemons() {
     try {
+        // localStorage.clear();
         const storedPokemons = localStorage.getItem('pokemons');
         if (storedPokemons) {
-            console.log('Using stored pokemons');
             return JSON.parse(storedPokemons);
         } else {
             const response = await fetch(`${POKEMON_API}?offset=0&limit=1302`);
             const data = await response.json();
 
             const pokemons = await Promise.all(data.results.map(async (pokemon, index) => {
-                const fullPokemonUrl = pokemon.url;
-                const types = await fetchPokemonTypes(fullPokemonUrl);
-                console.log("types", types);
+                const types = await fetchPokemonTypes(pokemon.url);
+
                 return {
                     id: (index + 1).toString().padStart(3, '0'),
                     name: pokemon.name,
-                    url: fullPokemonUrl, // Use the full URL here
+                    url: pokemon.url,
                     image: `${POKEMON_IMAGE_API}${(index + 1).toString().padStart(3, '0')}.png`,
                     types: types,
                 };
             }));
 
             localStorage.setItem('pokemons', JSON.stringify(pokemons));
-
             return pokemons;
         }
     } catch (error) {
@@ -42,5 +40,16 @@ const fetchPokemonTypes = async (url) => {
     } catch (error) {
         console.error('Error fetching pokemon types:', error);
         return [];
+    }
+}
+
+export async function fetchPokemonDetails(url) {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching pokemon information:', error);
+        return null;
     }
 }
