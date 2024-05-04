@@ -9,8 +9,11 @@ const POKEMON_IMAGE_API = 'https://assets.pokemon.com/assets/cms2/img/pokedex/fu
  * @throws {Error} If there is an error fetching the pokemons.
  */
 export async function fetchAllPokemons() {
+    // localStorage.removeItem('pokemons');
+    // localStorage.clear();
     try {
         const storedPokemons = localStorage.getItem('pokemons');
+        console.log(storedPokemons);
         if (storedPokemons) {
             return JSON.parse(storedPokemons);
         } else {

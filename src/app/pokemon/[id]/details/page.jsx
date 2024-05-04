@@ -15,6 +15,7 @@ export default function Page() {
   const id = pathname.split("/")[2];
 
   const { pokemon, pokemonDetails, pokemonDescription } = useFetchPokemon(id);
+  console.log(pokemon, pokemonDetails, pokemonDescription);
 
   const cleanPokemonDescription = (flavorText) => {
     const pattern = /[^\x20-\x7Eé]/g;
