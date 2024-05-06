@@ -3,7 +3,7 @@
 import React, { Suspense, useState } from "react";
 import { useDisplayPokemons } from "@/hooks/catalogue-actions";
 import { Button } from "@/components/ui/button";
-import Search from "../ui/search";
+import Search from "@/components/ui/search";
 import { useSearchPokemon, useGetAllPokemons } from "@/hooks/catalogue-actions";
 import PokemonCard from "@/components/catalogue/PokemonCard";
 import { ModeToggle } from "@/components/ui/theme-toggler";
