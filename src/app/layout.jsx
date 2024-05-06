@@ -6,8 +6,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "PokeDex",
-  description: "",
+  title: "Pokedex",
+  description: "A pokemon encyclopedia",
 };
 
 export default function RootLayout({ children }) {
