@@ -1,6 +1,6 @@
 # Pokedex
 
-A simple Pokemon catalogue website using PokeAPI.
+A simple Pokemon catalogue website using PokeAPI. You may access the deployed version on https://pokedex-csmartin.vercel.app/
 
 ![Alt text](public/SampleScreenshot1.png)
 ![image](public/SampleScreenshot2.png)
