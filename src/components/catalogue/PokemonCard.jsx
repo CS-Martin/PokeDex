@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useState, Suspense } from "react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import styles from "@/app/globals.css";
 import { getPokemonType } from "../typeIcons/icons";
 import { PokemonCardSkeleton, PokemonTypesSkeleton } from "../ui/skeletons";
