@@ -8,7 +8,7 @@ export function Header() {
 
   const isHomePage = pathname === "/";
   return (
-    <header className="flex justify-between w-full gap-3 p-3 md:justify-center 2xl:gap-x-10 lg:gap-x-7">
+    <header className="flex justify-center w-full gap-3 p-3 2xl:gap-x-10 lg:gap-x-7">
       {!isHomePage && <PrevButton />}
       <Link href={'/'}>
         <Image

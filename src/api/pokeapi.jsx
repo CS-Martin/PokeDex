@@ -13,7 +13,6 @@ export async function fetchAllPokemons() {
     // localStorage.clear();
     try {
         const storedPokemons = localStorage.getItem('pokemons');
-        console.log(storedPokemons);
         if (storedPokemons) {
             return JSON.parse(storedPokemons);
         } else {

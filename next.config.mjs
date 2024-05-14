@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['assets.pokemon.com']
+        remotePatterns: [
+            {
+                hostname: 'assets.pokemon.com',
+            },
+        ] 
     }
 };
 
